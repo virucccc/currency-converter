@@ -1,0 +1,133 @@
+.converter-page {
+  width: 480px;
+  padding: 8% 0 0;
+  margin: auto;
+}
+.history-page {
+  width: 640px;
+  margin: 0 auto 0;
+}
+.form {
+  position: relative;
+  z-index: 1;
+  background: #FFFFFF;
+  max-width: 100%;
+  margin: 0 auto 50px;
+  padding: 45px;
+  text-align: center;
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+.form input {
+  position: relative;
+  font-family: "Roboto", sans-serif;
+  outline: 0;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #4CAF50;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #FFFFFF;
+  font-size: 14px;
+  -webkit-transition: all 0.3 ease;
+  transition: all 0.3 ease;
+  cursor: pointer;
+}
+.form button:hover,.form button:active,.form button:focus {
+  background: #43A047;
+}
+.form select {
+  position: relative;
+  float: left;
+  width: 50%;
+  padding: 15px;
+  margin: 0 0 15px;
+}
+.form button#swap {
+  width: 32px;
+  padding: 10px;
+  margin: 0 0 15px;
+  color: #000000;
+  background: none;
+}
+.converter-page h1, .history-page h1 {
+  width: 100%;
+  font-size: 24px;
+  margin: 0 0 5px;
+  text-align: center;
+}
+.form input#picker {
+  width: 200px;
+  padding: 10px;
+  margin: 0 0 15px;
+}
+.form button#search {
+  width: 64px;
+  padding: 10px;
+  margin: 0 0 15px;
+}
+.form #history {
+  display: flex;
+  justify-content: space-between;
+}
+.form input#input1, .form input#input2{
+  width: 40%;
+}
+.flex-container {
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.row {
+    width: auto;
+}
+.flex-item {
+    padding: 5px;
+    width: 20px;
+    height: 20px;
+    margin: 10px;
+    line-height: 20px;
+    font-weight: bold;
+    font-size: 2em;
+    text-align: center;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+table, th, td {
+  border: 1px solid black;
+}
+th {
+  font-size: 14px;
+}
+td {
+  font-size: 12px;
+}
+body {
+  background: #76b852;
+  background: -webkit-linear-gradient(right, #76b852, #8DC26F);
+  background: -moz-linear-gradient(right, #76b852, #8DC26F);
+  background: -o-linear-gradient(right, #76b852, #8DC26F);
+  background: linear-gradient(to left, #76b852, #8DC26F);
+  font-family: "Roboto", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}

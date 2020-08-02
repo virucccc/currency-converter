@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{css/style.css}">
+</head>
+<body>
+    <div th:if="${message}">
+        <span style="color:red"><td th:text="${message}">Error</td></span>
+    </div>
+    <div class="auth-page">
+        <div class="form">
+            <form th:action="@{/signup}" method="post" class="register-form">
+                <input type="text" name="username" placeholder="Логин"/>
+                <input type="password" name="password" placeholder="Пароль"/>
+                <input type="password" name="password2" placeholder="Повторите пароль"/>
+                <button type="submit">Создать</button>
+                <p class="message">Уже зарегестрированы? <a href="/signin">Авторизоваться</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
