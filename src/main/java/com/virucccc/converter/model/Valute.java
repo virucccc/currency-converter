@@ -7,8 +7,9 @@ import java.util.Objects;
 @Table(name = "valutes")
 public class Valute {
     @Id
-    @Column(nullable=false)
+    @Column(name = "id", updatable = false, nullable = false)
     private Integer id;
+    @Column(length = 64)
     private String fullname;
     @Column(length = 3)
     private String shortname;

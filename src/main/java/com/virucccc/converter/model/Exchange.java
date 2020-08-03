@@ -8,14 +8,17 @@ import java.util.Objects;
 @Table(name = "exchanges")
 public class Exchange {
     @Id
-    @SequenceGenerator(name = "exchange", sequenceName = "exchange_sequence")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "exchanges_id_gen")
+    @SequenceGenerator(name = "exchanges_id_gen", sequenceName = "exchanges_id_seq", allocationSize = 1)
     private Long id;
+    @Column(nullable = false)
     private Float value;
     @ManyToOne
     @JoinColumn(name = "valute_id")
     private Valute valute;
     @Temporal(TemporalType.DATE)
+    @Column(nullable = false)
     private Calendar date;
 
     public Exchange() {

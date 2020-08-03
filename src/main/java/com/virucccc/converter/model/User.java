@@ -11,10 +11,13 @@ import java.util.Collections;
 @Table(name = "users")
 public class User implements UserDetails {
     @Id
-    @SequenceGenerator(name = "user", sequenceName = "user_sequence")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "users_id_gen")
+    @SequenceGenerator(name = "users_id_gen", sequenceName = "users_id_seq", allocationSize = 1)
     private Long id;
+    @Column(length = 32)
     private String username;
+    @Column(length = 128)
     private String password;
     @Transient
     private Role role;

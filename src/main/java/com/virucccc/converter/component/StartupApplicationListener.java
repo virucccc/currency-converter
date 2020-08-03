@@ -1,6 +1,5 @@
 package com.virucccc.converter.component;
 
-import com.virucccc.converter.model.Exchange;
 import com.virucccc.converter.model.Valute;
 import com.virucccc.converter.repository.ExchangeRepository;
 import com.virucccc.converter.repository.ValuteRepository;

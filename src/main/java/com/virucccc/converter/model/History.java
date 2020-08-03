@@ -2,15 +2,17 @@ package com.virucccc.converter.model;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Objects;
 
 @Entity
 @Table(name = "histories", uniqueConstraints = {@UniqueConstraint(columnNames = {"user_id", "exchange_from",
-        "exchange_to", "amount_from", "amount_to"})})
+        "exchange_to", "amount_from", "amount_to", "date"})})
 public class History {
     @Id
-    @SequenceGenerator(name = "history", sequenceName = "history_sequence")
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", updatable = false, nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "histories_id_gen")
+    @SequenceGenerator(name = "histories_id_gen", sequenceName = "histories_id_seq", allocationSize = 1)
     private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -25,18 +27,22 @@ public class History {
     private Float fromAmount;
     @Column(name = "amount_to")
     private Float toAmount;
+    @Temporal(TemporalType.DATE)
+    @Column(name = "date")
+    private Calendar date;
 
     private static transient final SimpleDateFormat format = new SimpleDateFormat("dd.MM.yyyy");
 
     public History() {
     }
 
-    public History(User user, Exchange from, Exchange to, Float fromAmount, Float toAmount) {
+    public History(User user, Exchange from, Exchange to, Float fromAmount, Float toAmount, Calendar date) {
         this.user = user;
         this.from = from;
         this.to = to;
         this.fromAmount = fromAmount;
         this.toAmount = toAmount;
+        this.date = date;
     }
 
     public Long getId() {
@@ -96,7 +102,11 @@ public class History {
     }
 
     public String getDate() {
-        return format.format(to.getDate().getTime());
+        return format.format(date.getTime());
+    }
+
+    public void setDate(Calendar date) {
+        this.date = date;
     }
 
     @Override
@@ -108,11 +118,12 @@ public class History {
                 Objects.equals(from, history.from) &&
                 Objects.equals(to, history.to) &&
                 Objects.equals(fromAmount, history.fromAmount) &&
-                Objects.equals(toAmount, history.toAmount);
+                Objects.equals(toAmount, history.toAmount) &&
+                Objects.equals(date, history.date);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(user, from, to, fromAmount, toAmount);
+        return Objects.hash(user, from, to, fromAmount, toAmount, date);
     }
 }

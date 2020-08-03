@@ -20,7 +20,6 @@ import java.text.SimpleDateFormat;
 import java.util.*;
 
 import static com.virucccc.converter.utils.ValutesExchange.findValuteByShortname;
-import static com.virucccc.converter.utils.ValutesExchange.getValutes;
 
 @Controller
 public class ConverterController {
@@ -81,12 +80,13 @@ public class ConverterController {
         float ratio = fromExchange.getValue() / toExchange.getValue();
         BigDecimal toValue = round(fromValue.multiply(new BigDecimal(ratio)));
         fromValue = round(fromValue);
+        Calendar calendar = new GregorianCalendar();
 
         History history = historyRepository.contains(user, fromExchange, toExchange, fromValue.floatValue(),
-                toValue.floatValue());
+                toValue.floatValue(), calendar);
         if (history == null) {
             history = new History(user, fromExchange, toExchange, fromValue.floatValue(),
-                    toValue.floatValue());
+                    toValue.floatValue(), calendar);
             histories.add(history);
             historyRepository.save(history);
         }
@@ -107,7 +107,7 @@ public class ConverterController {
     public String converter(@AuthenticationPrincipal User user,
                             @RequestParam(name = "datepicker") String date,
                             Model model) {
-        Collection<HistoryExchange> histories = new ArrayList<>();
+        Collection<History> histories = new ArrayList<>();
         try {
             Calendar cal = new GregorianCalendar();
             if (date.isEmpty()) {
