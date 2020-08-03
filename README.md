@@ -2,18 +2,18 @@
 
 **Описание:**
 
-Конвертация валют на основе курсов [ЦБРФ](http://www.cbr.ru/scripts/XML_daily.asp). Конвертация доступна после авторизации. Также введется история конвертаций.
+Конвертация валют на основе курсов [ЦБРФ](http://www.cbr.ru/scripts/XML_daily.asp). Конвертация доступна после авторизации. Есть история совершенных пользователем конвертаций.
 
 **Результаты:**
 
 <p align="center">
-  <img src="login.jpg">
+  <img width="480" height="240" src="login.jpg">
 </p>
 
 Авторизовавшись пользователь попадает на главную страницу.
 
 <p align="center">
-  <img src="converter.jpg">
+  <img width="480" height="360" src="converter.jpg">
 </p>
 
  При написании приложения использовалась Java 11, Spring Boot 2. Шаблонизатор Thymeleaf и СУБД PostgreSQL 12.
